@@ -11,7 +11,7 @@ https://ai.google.dev/gemini-api/docs/get-started/python
 
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyBnPaVUw2dzpfMgxRyJbX5hDS7fs1aOEpc")
+genai.configure(api_key="")
 
 # Create the model
 # See https://ai.google.dev/api/python/google/generativeai/GenerativeModel
