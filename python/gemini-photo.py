@@ -72,4 +72,4 @@ https://ai.google.dev/gemini-api/docs/get-started/python
 
 import os
 
-print(os.environ["VAR_A"])
+print(os.environ["GEMINI_KEY"])
