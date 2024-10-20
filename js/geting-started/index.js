@@ -1,12 +1,5 @@
 // Smart contract analyzer
 
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
-
-const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
-});
-
 const generationConfig = {
     temperature: 1.5,
     topP: 0.95,
@@ -26,7 +19,6 @@ async function run(contract) {
                     role: "user",
                     parts:[
                     {text: `Your role and goal is to be an AI Smart Contract Auditor. Your job is to perform an audit on the given smart contract. Here is the smart contract: ${contract}.
-          
           Please provide the results in the following array format for easy front-end display:
   
           [

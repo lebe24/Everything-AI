@@ -79,3 +79,41 @@ async function run() {
 }
 
 run();
+
+
+const fs = require("fs");
+const pdf = require("pdf-parse");
+
+// Function to convert a file into a base64 encoded part with a given MIME type
+function fileToGenerativePart(path, mimeType) {
+  return {
+    inlineData: {
+      data: Buffer.from(fs.readFileSync(path)).toString("base64"),
+      mimeType
+    },
+  };
+}
+
+// Read and parse the content of a PDF file
+async function readPdfContent(filePath) {
+  const dataBuffer = fs.readFileSync(filePath);
+  
+  try {
+    const pdfData = await pdf(dataBuffer);
+    console.log("PDF Content:");
+    console.log(pdfData.text); // Output the text content of the PDF
+
+    // Create a base64 encoded object for further use if needed
+    const filePart = fileToGenerativePart(filePath, "application/pdf");
+    console.log("Base64 Encoded Part:");
+    console.log(filePart);
+  } catch (error) {
+    console.error("Error reading PDF file:", error);
+  }
+}
+
+// Specify the path to your PDF file
+const filePath = "pd.pdf";
+
+// Call the function to read and output the PDF content
+readPdfContent(filePath);
